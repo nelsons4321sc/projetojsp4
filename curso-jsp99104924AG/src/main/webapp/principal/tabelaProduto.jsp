@@ -78,7 +78,7 @@
 														<td><c:out value="R$ ${p.valor }"></c:out></td>
 														
 														<td><a class="btn btn-success" href="<%= request.getContextPath() %>/ControleProduto?acao=editar&id=${p.idproduto}&userpai=${modelLogin.id}">Editar</a></td>											
-														<td><a class="btn btn-success" href="<%= request.getContextPath() %>/ControleProduto?acao=excluir&id=${p.idproduto}&userpai=${modelLogin.id}">Excluir</a></td>
+														<td><a class="btn btn-success"  href="<%= request.getContextPath() %>/ControleProduto?acao=excluir&id=${p.idproduto}&userpai=${modelLogin.id}" >Excluir</a></td>
 													</tr>
 												</c:forEach>
 											</tbody>
@@ -318,7 +318,34 @@
 		}
 	</script>
 	
+	<script type="text/javascript">
 	
+	function criaDeletecomAjax() {
+		if (confirm("Deseja realmente excluir os seus dados?Os telefones e produtos deste usuário serão também automáticamente excluídos")) {
+
+			var urlAction = document.getElementById("formUser").action;
+			var idUser = document.getElementById("id").value;
+
+			$.ajax({
+
+				method : "get",
+				url : urlAction,
+				data : "id=" + idUser + "&acao=deletarajax",
+				success : function(response) {
+					
+					limparform();
+					document.getElementById('msg').textContent = response;
+				}
+
+			}).fail(
+					function(xhr, status, errorThrown) {
+						alert('Erro por deletar usuário por id: '
+								+ xhr.responseText);
+					});
+		}
+	}
+	
+	</script>
 
 	
 

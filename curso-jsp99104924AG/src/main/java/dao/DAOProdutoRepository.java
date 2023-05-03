@@ -105,7 +105,7 @@ public class DAOProdutoRepository {
 		List<ModelProduto> retorno = new ArrayList<ModelProduto>();
 		
 		//String sql = "select * from produto where nomeproduto = ? and usuario_pai_id = ?";
-		String sql = "select * from produto2 where usuario_pai_id =  "+idUserPai;
+		String sql = "select * from produto2 where usuario_pai_id =  "+idUserPai+"limit 5";
 		//String sql = "select * from produto2 where usuario_pai_id = ? and idproduto = ?";
 		//String sql = "select * from produto where id = ?";
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -141,7 +141,7 @@ public class DAOProdutoRepository {
 			//String sql = "select * from produto where nomeproduto = ? and usuario_pai_id = ?";
 			//String sql = "select * from produto2 where usuario_pai_id = ? ";
 			//String sql = "select * from produto where usuario_pai_id = ? and id = ?";
-			String sql = "select * from produto2 where idproduto = ?";
+			String sql = "select * from produto2 where idproduto = ? limit 5 ";
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setLong(1, id);
 			
@@ -174,7 +174,7 @@ public class DAOProdutoRepository {
 				List<ModelProduto> retorno = new ArrayList<ModelProduto>();
 				
 				//String sql = "select * from produto where nomeproduto = ? and usuario_pai_id = ?";
-				String sql = "select * from produto2 as prod inner join model_login as login on prod.usuario_pai_id = login.id ";
+				String sql = "select * from produto2 as prod inner join model_login as login on prod.usuario_pai_id = login.id limit 5 ";
 				PreparedStatement preparedStatement = connection.prepareStatement(sql);
 				//preparedStatement.setLong(1, idUserPai);
 				
@@ -414,7 +414,7 @@ public List<ModelProduto> consultaProdutoList(String nome) throws Exception {
 	
 	//String sql ="select * from produto2 where nomeproduto = "+nome +" limit 15"; 
 	//String sql ="select * from produto2 where upper(nomeproduto) like upper(?) and usuario_pai_id = ? limit 5";
-	String sql = "select * from produto2 where upper(nomeproduto) like upper(?)";
+	String sql = "select * from produto2 where upper(nomeproduto) like upper(?) limit 5";
 	PreparedStatement statement = connection.prepareStatement(sql);
 	statement.setString(1, "%" + nome + "%");
 	//statement.setLong(2,  userLogado);

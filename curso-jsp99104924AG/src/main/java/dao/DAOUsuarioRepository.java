@@ -209,7 +209,7 @@ public List<ModelLogin> consultaUsuarioList(Long userLogado) throws Exception {
 		
 		List<ModelLogin> retorno = new ArrayList<ModelLogin>();
 		
-		String sql ="select * from model_login where useradmin is false and usuario_id = "+userLogado +" limit 15"; 
+		String sql ="select * from model_login where useradmin is false and usuario_id = "+userLogado +" limit 5"; 
 		
 		PreparedStatement statement = connection.prepareStatement(sql);
 						
@@ -236,7 +236,7 @@ public List<ModelLogin> consultaUsuarioList(Long userLogado) throws Exception {
 
 public int totalPagina(Long userLogado) throws Exception {
 	
-	String sql ="select count(1) as total  from model_login where usuario_id = "+userLogado +" limit 15";
+	String sql ="select count(1) as total  from model_login where usuario_id = "+userLogado +" limit 5";
 	PreparedStatement statement = connection.prepareStatement(sql);
 	
 	ResultSet resultado = statement.executeQuery();
@@ -301,7 +301,7 @@ public List<ModelLogin> consultaUsuarioListPaginada(Long userLogado, Integer off
 	
 	List<ModelLogin> retorno = new ArrayList<ModelLogin>();
 	
-	String sql ="select * from model_login where useradmin is false and usuario_id = "+userLogado +" order by nome offset "+offset+" limit 15"; 
+	String sql ="select * from model_login where useradmin is false and usuario_id = "+userLogado +" order by nome offset "+offset+" limit 5"; 
 	
 	PreparedStatement statement = connection.prepareStatement(sql);
 					
