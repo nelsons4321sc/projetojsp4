@@ -174,7 +174,7 @@ public class DAOProdutoRepository {
 				List<ModelProduto> retorno = new ArrayList<ModelProduto>();
 				
 				//String sql = "select * from produto where nomeproduto = ? and usuario_pai_id = ?";
-				String sql = "select * from produto2 as prod inner join model_login as login on prod.usuario_pai_id = login.id limit 5 ";
+				String sql = "select * from produto2 as prod inner join model_login as login on prod.usuario_pai_id = login.id";
 				PreparedStatement preparedStatement = connection.prepareStatement(sql);
 				//preparedStatement.setLong(1, idUserPai);
 				
@@ -323,7 +323,7 @@ public int totalPagina(Long userLogado) throws Exception {
 	
 	Double cadastros = resultado.getDouble("total");
 	
-	Double porpagina = 15.0;
+	Double porpagina = 5.0;
 	
 	Double pagina  = cadastros / porpagina;
 	
@@ -377,7 +377,7 @@ public List<ModelProduto> consultaProdutoListPaginada(Long userLogado, Integer o
 	
 	List<ModelProduto> retorno = new ArrayList<ModelProduto>();
 	
-	String sql ="select * from produto2 where usuario_pai_id = "+userLogado +" order by nome offset "+offset+" limit 5"; 
+	String sql ="select * from produto2 where usuario_pai_id = "+userLogado +" order by nomeproduto offset "+offset+" limit 5"; 
 	
 	PreparedStatement statement = connection.prepareStatement(sql);
 					

@@ -245,7 +245,7 @@ public int totalPagina(Long userLogado) throws Exception {
 	
 	Double cadastros = resultado.getDouble("total");
 	
-	Double porpagina = 15.0;
+	Double porpagina = 5.0;
 	
 	Double pagina  = cadastros / porpagina;
 	
@@ -338,7 +338,7 @@ public int consultaUsuarioListTotalPaginaPaginacao(String nome, Long userLogado)
 	
 	Double cadastros = resultado.getDouble("total");
 	
-	Double porpagina = 15.0;
+	Double porpagina = 5.0;
 	
 	Double pagina = cadastros / porpagina;
 	

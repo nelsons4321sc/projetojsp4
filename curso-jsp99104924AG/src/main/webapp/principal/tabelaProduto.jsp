@@ -85,7 +85,7 @@
 										</table>
 									</div>
 									
-									<div align="center">
+								
 									<nav aria-label="Navegar por páginas">
 											<ul class="pagination">
 											<!-- Capturando com a palavra totalPagina o atributo da ServletController -->
@@ -93,7 +93,7 @@
 											     int totalPagina = (int) request.getAttribute("totalPagina");
 											   
 											    for (int p = 0; p < totalPagina; p++){
-											    	String url = request.getContextPath() + "/ControleProduto?acao=paginar&pagina=" + (p * 5);  
+											    	String url = request.getContextPath() + "/ControleProduto?acao=paginar&pagina=" + (p  * 5);  
 											    	out.print("<li class=\"page-item\"><a class=\"page-link\" href=\""+ url +"\">"+(p + 1)+"</a></li>");
 											    }
 											   
@@ -102,7 +102,7 @@
 												
 											</ul>
 										</nav>
-									</div>													
+																			
 									
 								</form>
 							</div>

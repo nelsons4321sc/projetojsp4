@@ -124,13 +124,13 @@ public class ServletProdutoController extends ServleGenericUtil {
 			 
 	       // int idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
 			 if (acao != null && !acao.isEmpty() && acao.equalsIgnoreCase("paginar")) {
-				 String nomeBusca = request.getParameter("nomeBusca");
+				
 				 Integer offset = Integer.parseInt(request.getParameter("pagina"));
 				 
-				 List<ModelProduto> modelProdutos = daoProdutoRepository.consultaProdutoListPagina(nomeBusca, super.getUserLogado(request));
-				 
+				// List<ModelProduto> modelProdutos = daoProdutoRepository.consultaProdutoListPagina(nomeBusca, super.getUserLogado(request));
+				 List<ModelProduto> modelProdutos = daoProdutoRepository.consultaProdutoListPaginada(this.getUserLogado(request), offset);
 				 request.setAttribute("modelProdutos", modelProdutos);
-			     request.setAttribute("totalPagina", daoUsuarioRepository.totalPagina(this.getUserLogado(request)));
+			     request.setAttribute("totalPagina", daoProdutoRepository.totalPagina(this.getUserLogado(request)));
 				 request.getRequestDispatcher("principal/tabelaProduto.jsp").forward(request, response);
 				 
 			 }	
