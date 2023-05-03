@@ -372,12 +372,12 @@ ModelProduto modelProduto = new ModelProduto();
 }
 
 
-/*	
+	
 public List<ModelProduto> consultaProdutoListPaginada(Long userLogado, Integer offset ) throws Exception {
 	
 	List<ModelProduto> retorno = new ArrayList<ModelProduto>();
 	
-	String sql ="select * from produto2 where usuario_pai_id = "+userLogado +" order by nome offset "+offset+" limit 15"; 
+	String sql ="select * from produto2 where usuario_pai_id = "+userLogado +" order by nome offset "+offset+" limit 5"; 
 	
 	PreparedStatement statement = connection.prepareStatement(sql);
 					
@@ -405,7 +405,7 @@ public List<ModelProduto> consultaProdutoListPaginada(Long userLogado, Integer o
 	return retorno;
 	
 }
-	*/
+	
 
 //public List<ModelProduto> consultaProdutoList(String nome, Long userLogado) throws Exception {
 public List<ModelProduto> consultaProdutoList(String nome) throws Exception {
