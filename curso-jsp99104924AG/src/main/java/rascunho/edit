@@ -1,0 +1,54 @@
+EDIT.jspS
+
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+		<%@ page import="dao.DAOClienteRepository, model.ModelCliente, java.util.*"%>
+		
+		<%
+			
+			String id = request.getParameter("id");
+		 	DAOClienteRepository dao = new DAOClienteRepository();
+		 	ModelCliente modelCliente = dao.getClienteid(Long.parseLong(id));
+		 	
+		%>	
+		<h1> Edição de Clientes</h1>
+		
+		<form action="" method="post">
+		
+		<input type="hidden" name="acao" id="acao" value="">
+																			
+																<div class="form-group form-default form-static-label">
+                                                                <input type="text" name="id"  class="form-control" readonly="readonly" value="<%=modelCliente.getId()%>" />
+                                                                <span class="form-bar"></span>
+                                                                <label class="float-label">ID</label>
+                                                            </div>	
+																	
+																										
+																
+																
+															<div class="form-group form-default form-static-label">
+																<input type="text" name="nome" id="nome" class="form-control" required="required" value="<%=modelCliente.getNome() %>" /> 
+																	<span class="form-bar"></span> <label class="float-label">Nome do Cliente</label>
+															</div>
+															
+															<div class="form-group form-default form-static-label">
+																<input type="email" name="email" id=email
+																	class="form-control" required="required"
+																	autocomplete="off" value="<%=modelCliente.getEmail()%>">
+																<span class="form-bar"></span> <label
+																	class="float-label">Email (exa@gmail.com)</label>
+															</div>
+		
+		
+		
+		</form>
+		
+</body>
+</html>

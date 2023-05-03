@@ -1,0 +1,12 @@
+Olá meu caro, então, a ideia é que os alunos possam exercitar o conhecimento que estão adiquirindo,
+ fazendo essas demais implemetações, como por exemplo a opção para editar telefone. 
+ Com todo conteúdo abordado até aqui já da para implementar perfeitamente o editar 
+ telefone, basta criar um botão para executar um método em uma servlet que carrega os dados e joga no 
+ formulário na tela, dái é só implementar o update na camada DAO, assim como foi feito para o usuário, a abordagem é a mesma.
+
+Atenciosamente,
+Wendel Alves Segadilha
+Suporte Jdev Treinamento
+LinkedIn: https://br.linkedin.com/in/wendel-segadilha
+GitHub: https://github.com/wendelsegadilha
+YouTube: https://www.youtube.com/wendelsegadilha  

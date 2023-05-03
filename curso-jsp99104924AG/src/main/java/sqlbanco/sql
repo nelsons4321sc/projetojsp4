@@ -1,0 +1,271 @@
+
+CREATE DATABASE "curso-jsp"
+  WITH OWNER = postgres
+       ENCODING = 'UTF8'
+       TABLESPACE = pg_default
+       LC_COLLATE = 'Portuguese_Brazil.1252'
+       LC_CTYPE = 'Portuguese_Brazil.1252'
+       CONNECTION LIMIT = -1;
+
+
+CREATE TABLE public.model_login
+(
+  login character varying(200) NOT NULL,
+  senha character varying(200) NOT NULL,
+  id integer NOT NULL DEFAULT nextval('model_login_id_seq'::regclass),
+  nome character varying(300) NOT NULL,
+  email character varying(300) NOT NULL,
+  CONSTRAINT model_login_pkey PRIMARY KEY (id),
+  CONSTRAINT login_unique UNIQUE (login)
+)
+
+  
+  INSERT INTO public.model_login(
+            login, senha)
+    VALUES ( 'admin', 'admin');
+    
+    
+	 paginando e limitado usuários até 5
+ 		offset é a página exibida 
+	 limit de 5 usuários
+ select * from model_login where usuario_id = 2 order by nome offset 0 limit 5  
+ 
+ Selecione quantos cadastros tem o usuario_id = 2 dentro da tabela
+ pela primeira coluna
+ select count(1)  from model_login where usuario_id = 2
+ 
+ 
+ 
+ CRIAÇÃO DA TABELA TELEFONE
+  
+ CREATE TABLE public.telefone
+(
+  id integer NOT NULL DEFAULT nextval('telefone_seq'::regclass),
+  numero character varying(50) NOT NULL,
+  usuario_pai_id bigint NOT NULL,
+  usuario_cad_id bigint NOT NULL,
+  CONSTRAINT telefone_pkey PRIMARY KEY (id),
+  CONSTRAINT usuario_cad_fk FOREIGN KEY (usuario_cad_id)
+      REFERENCES public.model_login (id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT usuario_pai_fk FOREIGN KEY (usuario_pai_id)
+      REFERENCES public.model_login (id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE CASCADE
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE public.telefone
+  OWNER TO postgres;
+ 
+ 
+ 
+
+CRIAÇÃO DA TABELA COMPLETA DO MODEL_lOGIN
+
+CREATE TABLE public.model_login
+(
+  login character varying(200) NOT NULL,
+  senha character varying(200) NOT NULL,
+  id integer NOT NULL DEFAULT nextval('model_login_id_seq'::regclass),
+  nome character varying(300) NOT NULL,
+  email character varying(300) NOT NULL,
+  usuario_id bigint NOT NULL DEFAULT 2,
+  perfil character varying(200),
+  sexo character varying(200),
+  fotouser text,
+  extensaofotouser character varying(10),
+  useradmin boolean NOT NULL DEFAULT false,
+  cep character varying(250),
+  logradouro character varying(250),
+  bairro character varying(250),
+  localidade character varying(250),
+  uf character varying(250),
+  numero character varying(250),
+  CONSTRAINT model_login_pkey PRIMARY KEY (id),
+  CONSTRAINT login_unique UNIQUE (login)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE public.model_login
+  OWNER TO postgres;
+
+
+alter table model_login add column dataNascimento date;
+
+linha abaixo faz referência a criação de um campo do tipo double
+
+ALTER TABLE public.model_login ADD COLUMN rendamensal double precision;
+
+
+DELETAR UMA COLUNA DA TABELA:	
+ALTER TABLE model_login DROP COLUMN cpf;	
+	
+ -------------------------------------------------------------------------------
+ Primeiro:
+1 
+ cria o banco de dados 
+ 
+ 2
+ cria a tabela
+ 
+ 3
+ adiciona:
+ login
+ Senha
+ 
+ 4
+ adiciona:
+ constarint
+ login_unique
+ 
+ 5 
+ adiciona:
+ ALTER TABLE model_login add id serial primary key;
+ 
+ 6
+ ALTER TABLE public.model_login ADD COLUMN email character varying(200);
+ 
+ 7
+ alter table model_login add column useradmin boolean not null default false
+ 
+ 8
+ alter table model_login add column usuario_id bigint not null default 1;
+ 
+ 9
+ alter table model_login add constraint usuario_fk foreign key (usuario_id) references model_login (id)
+ 
+-------------------------------------------------------------------------------------------------------------------------------------
+
+			ADICIONANDO CAMPOS NUMA TABELA
+
+ALTER TABLE public.model_login ADD COLUMN fotouser text;
+
+ALTER TABLE public.model_login ADD COLUMN extensaofotouser character varying(10);
+
+ALTER TABLE public.model_login ADD COLUMN cep character varying(250);
+
+ALTER TABLE public.model_login ADD COLUMN logradouro character varying(250);
+
+ALTER TABLE public.model_login ADD COLUMN bairro character varying(250);
+
+ALTER TABLE public.model_login ADD COLUMN localidade character varying(250);
+
+ALTER TABLE public.model_login ADD COLUMN uf character varying(250);
+
+ALTER TABLE public.model_login ADD COLUMN numero character varying(250);
+
+ALTER TABLE public.model_login ADD COLUMN datanascimento date;
+
+ALTER TABLE public.model_login ADD COLUMN rendamensal double precision;
+
+ALTER TABLE public.model_login ADD COLUMN nome character varying(300);
+
+ALTER TABLE public.model_login ADD COLUMN sexo character varying(200);
+
+					PARA CRIAÇÃO DE TABELAS 
+
+	
+
+		TABELA PRODUTO
+
+		COMANDOS:
+		
+	1 - CRIAR SEQUÊNCIAS	
+
+CREATE SEQUENCE public.produto_seq
+  INCREMENT 1
+  MINVALUE 1
+  MAXVALUE 9223372036854775807
+  START 1
+  CACHE 1;
+  
+  	2 - CRIAÇÃO DA TABELA
+
+CREATE TABLE public.produto
+(
+  id integer NOT NULL DEFAULT nextval('produto_seq'::regclass),
+  valor double precision,
+  fotoproduto text,
+  extensaofotoproduto character varying(10),
+  usuario_pai_id bigint NOT NULL,
+  usuario_cad_id bigint NOT NULL,
+  dataproduto date,
+  nomeproduto character varying(300),
+  CONSTRAINT produto_pkey PRIMARY KEY (id),
+  CONSTRAINT usuario_cad_fk FOREIGN KEY (usuario_cad_id)
+      REFERENCES public.model_login (id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE CASCADE,
+  CONSTRAINT usuario_pai_fk FOREIGN KEY (usuario_pai_id)
+      REFERENCES public.model_login (id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE CASCADE
+)
+
+
+		TABELA TELEFONE
+
+	1 - CRIAR SEQUÊNCIAS NA TABELA
+	
+CREATE SEQUENCE public.telefone_seq
+  INCREMENT 1
+  MINVALUE 1
+  MAXVALUE 9223372036854775807
+  START 1
+  CACHE 1;
+
+	2 - CRIAÇÃO DA TABELA
+
+CREATE TABLE public.telefone
+(
+  id integer NOT NULL DEFAULT nextval('telefone_seq'::regclass),
+  numero character varying(50) NOT NULL,
+  usuario_pai_id bigint NOT NULL,
+  usuario_cad_id bigint NOT NULL,
+  CONSTRAINT telefone_pkey PRIMARY KEY (id),
+  CONSTRAINT usuario_cad_fk FOREIGN KEY (usuario_cad_id)
+      REFERENCES public.model_login (id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE CASCADE,
+  CONSTRAINT usuario_pai_fk FOREIGN KEY (usuario_pai_id)
+      REFERENCES public.model_login (id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE CASCADE
+)
+
+		TABELA VERSIONAMENTO
+
+	1 - CRIAR SEQUÊNCIAS NA TABELA
+
+CREATE SEQUENCE public.versionadorbanco_seq
+  INCREMENT 1
+  MINVALUE 1
+  MAXVALUE 9223372036854775807
+  START 1
+  CACHE 1;
+
+	2 - CRIAÇÃO DA TABELA  
+  
+CREATE TABLE public.versionadorbanco
+(
+  id integer NOT NULL DEFAULT nextval('versionadorbanco_seq'::regclass),
+  arquivo_sql character varying(50) NOT NULL,
+  CONSTRAINT id_pk PRIMARY KEY (id)
+)
+   TRAZER TODOS OS PRODUTOS CADASTRADOS, INDEPENDENTE DE QUEM FEZ O CADASTRO
+   
+   select * from produto as prod
+inner join model_login as login
+on prod.usuario_pai_id = login.id 
+
+	TRAZER TODOS OS PRODUTOS CADASTRADOS, SELECIONANDO COLUNAS
+
+select nomeproduto, fotoproduto, extensaofotoproduto, valor from produto as prod
+inner join model_login as login
+on prod.usuario_pai_id = login.id 
+
+	TRAZER PRODUTOS CADASTRADOS, POR UM USUÁRIO
+
+	select nomeproduto, fotoproduto, extensaofotoproduto, valor from produto as prod
+inner join model_login as login
+on prod.usuario_pai_id = login.id 
+WHERE login.id = 16
+	
