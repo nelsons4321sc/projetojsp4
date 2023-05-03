@@ -93,6 +93,7 @@ public class ServletProdutoController extends ServleGenericUtil {
 				request.setAttribute("msg", "Produto em Edição ");
 				request.setAttribute("modelLogin", modelLogin);
 				request.setAttribute("modelProduto", modelProduto);
+				request.setAttribute("totalPagina", daoProdutoRepository.totalPagina(this.getUserLogado(request)));
 				request.getRequestDispatcher("principal/formProduto.jsp").forward(request, response);
 				
 				//para ser executado somente esse bloco, linha abaixo e não executar o outros ifs, executa o delete e para
@@ -165,6 +166,7 @@ public class ServletProdutoController extends ServleGenericUtil {
 					request.setAttribute("modelProdutos", modelProdutos);
 					request.setAttribute("msg", "Produto excluído");
 					request.setAttribute("modelLogin", modelLogin);
+					request.setAttribute("totalPagina", daoProdutoRepository.totalPagina(this.getUserLogado(request)));
 					request.getRequestDispatcher("principal/formProduto.jsp").forward(request, response);
 					//request.getRequestDispatcher("principal/tabelaProduto.jsp").forward(request, response);
 					

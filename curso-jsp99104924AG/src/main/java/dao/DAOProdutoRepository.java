@@ -314,7 +314,7 @@ public boolean existeProduto(String nomeproduto) throws Exception {
 
 public int totalPagina(Long userLogado) throws Exception {
 	
-	String sql ="select count(1) as total  from produto2 where usuario_pai_id = "+userLogado +" limit 15";
+	String sql ="select count(1) as total  from produto2 where usuario_pai_id = "+userLogado +" limit 5";
 	PreparedStatement statement = connection.prepareStatement(sql);
 	
 	ResultSet resultado = statement.executeQuery();
