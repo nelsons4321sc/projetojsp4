@@ -15,6 +15,10 @@ public class DAOLoginRepository {
 	 * No muito falar não falta transgressão,
 	 * mas o que modera os lábios é prudente - pv10.19
 	 */
+	
+	/*
+	 * Alteração para testar o revert no git
+	 */
 
 	public DAOLoginRepository() {
 		connection = SingleConnection.getConnection();
