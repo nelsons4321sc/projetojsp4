@@ -36,7 +36,7 @@
                                       <li class="more-details">
                                           <!--  <a href="user-profile.html"><i class="ti-user"></i>View Profile</a>-->
                                           <!--  <a href="#!"><i class="ti-settings"></i>Settings</a> -->
-                                          <a href="<%= request.getContextPath() %>/UsuárioCadastrado?acao=logout"><i class="ti-layout-sidebar-left"></i>Editar</a>
+                                          <a href="<%= request.getContextPath() %>/UsuárioCadastrado?acao=buscarEditar"><i class="ti-layout-sidebar-left"></i>Editar</a>
                                          
                                       </li>
                                   </ul>
