@@ -21,6 +21,7 @@ import org.apache.tomcat.util.codec.binary.Base64;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import beandto.BeanDtoGraficoSalarioUser;
+import dao.DAOContaUsuarioRepository;
 import dao.DAOUsuarioRepository;
 import model.ModelLogin;
 import util.ReportUtil;
@@ -32,6 +33,7 @@ public class ServletUsuarioController2 extends ServleGenericUtil {
 	private static final long serialVersionUID = 1L;
 	
 	private DAOUsuarioRepository daoUsuarioRepository = new DAOUsuarioRepository();
+	private DAOContaUsuarioRepository daoContaUsuarioRepository = new DAOContaUsuarioRepository();
 	
 	public ServletUsuarioController2() {
         
@@ -100,11 +102,11 @@ public class ServletUsuarioController2 extends ServleGenericUtil {
 			 
 		 	}	
 		else if(acao != null && !acao.isEmpty() && acao.equalsIgnoreCase("buscarEditar")) {
-			String id = request.getParameter("id");
+			//String id = request.getParameter("id");
 			
 			
 					
-			ModelLogin modelLogin = daoUsuarioRepository.consultarUsuarioID(id, super.getUserLogado(request));
+			ModelLogin modelLogin = daoContaUsuarioRepository.consultarUsuarioID( super.getUserLogado(request));
 			
 			List<ModelLogin> modelLogins = daoUsuarioRepository.consultaUsuarioList(super.getUserLogado(request));
 			
@@ -114,7 +116,7 @@ public class ServletUsuarioController2 extends ServleGenericUtil {
 			request.setAttribute("msg", "usuário em edição");
 			request.setAttribute("modelLogin", modelLogin);
 			request.setAttribute("totalPagina", daoUsuarioRepository.totalPagina(this.getUserLogado(request)));
-			request.getRequestDispatcher("principal/usuario.jsp").forward(request, response);
+			request.getRequestDispatcher("principal/contausuario.jsp").forward(request, response);
 			
 			
 			
@@ -126,7 +128,7 @@ public class ServletUsuarioController2 extends ServleGenericUtil {
 			request.setAttribute("msg", "usuários carregados");
 			request.setAttribute("modelLogins", modelLogins);
 			request.setAttribute("totalPagina", daoUsuarioRepository.totalPagina(this.getUserLogado(request)));
-			request.getRequestDispatcher("principal/usuario.jsp").forward(request, response); 
+			request.getRequestDispatcher("principal/contausuario.jsp").forward(request, response); 
 		}
 		else if(acao != null && !acao.isEmpty() && acao.equalsIgnoreCase("listarTabUser")) {	
 			
@@ -254,7 +256,7 @@ public class ServletUsuarioController2 extends ServleGenericUtil {
 			request.setAttribute("msg", "usuários carregados");
 			request.setAttribute("modelLogins", modelLogins);
 			request.setAttribute("totalPagina", daoUsuarioRepository.totalPagina(this.getUserLogado(request)));
-			request.getRequestDispatcher("principal/usuario.jsp").forward(request, response);
+			request.getRequestDispatcher("principal/contausuario.jsp").forward(request, response);
 		}
 		
 		

@@ -516,7 +516,7 @@ public ModelLogin consultarUsuario(String login) throws Exception {
 		
 	}
 	
-	
+/*	
 public ModelLogin consultarUsuarioID(Long id) throws Exception {
 		
 		ModelLogin modelLogin = new ModelLogin();
@@ -552,19 +552,20 @@ public ModelLogin consultarUsuarioID(Long id) throws Exception {
 		return modelLogin;
 		
 	}
+*/	
 	
 	
 	
+public ModelLogin consultarUsuarioID(Long userLogado ) throws Exception {
+		Long id = userLogado;
 	
-public ModelLogin consultarUsuarioID(String id, Long userLogado ) throws Exception {
-		
 		ModelLogin modelLogin = new ModelLogin();
+		//modelLogin.setId(id);
 		
-		String sql = "select * from model_login where id = ? and useradmin is false and usuario_id = ?";
+		String sql = "select * from model_login where id = "+id+" and useradmin is false";
 		
 		PreparedStatement statement = connection.prepareStatement(sql);
-		statement.setLong(1, Long.parseLong(id));
-		statement.setLong(2, userLogado);
+		//statement.setLong(1, userLogado);
 		
 		ResultSet resultado = statement.executeQuery();
 		

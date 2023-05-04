@@ -42,7 +42,9 @@
 														<form class="form-material" enctype="multipart/form-data"
 															action="<%=request.getContextPath()%>/UsuárioCadastrado"
 															method="post" id="formUser">
-
+															<div align="center">
+															<h3 style="color: red"><span id="msg">${msg}</span></h3>
+															</div>	
 															<input type="hidden" name="acao" id="acao" value="">
 																			
 															<div class="form-group form-default  form-static-label ">
@@ -174,7 +176,7 @@
 									<div id="styleSelector"> </div>
 									</div>	
 								
-									<center><h3 style="color: red"><span id="msg">${msg}</span></h3></center>
+									
 		
 									
 							
