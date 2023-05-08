@@ -66,7 +66,7 @@
 																	readonly="readonly" value="${modelProduto.idproduto}"> <span
 																	class="form-bar"></span>  
 																
-																<label class="float-label">Produto ID</label>
+																<label class="float-label">Código do Produto</label>
 															</div>
 															
 															<!-- 

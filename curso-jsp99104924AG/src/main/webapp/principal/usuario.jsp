@@ -62,7 +62,7 @@
 																	readonly="readonly" value="${modelLogin.id}"> <span
 																	class="form-bar"></span>  
 																<!-- <label class="float-label">ID</label>   -->
-																<label class="float-label">Código de Registro</label>
+																<label class="float-label">Código do Cliente</label>
 															</div>
 															
 															
