@@ -46,8 +46,6 @@
 														<h1 style="color: red"> Tela de Produto</h1>
 														
 														</div>
-															
-														
 														
 														<form class="form-material"  enctype="multipart/form-data" 
 															action="<%=request.getContextPath()%>/ControleProduto"
