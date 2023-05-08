@@ -42,7 +42,9 @@
 													<div class="card-block">
 														<div align="center">
 														
-														<h2 style="color: red"><span id="msg">${msg}</span></h2>
+														<!--  <h2 style="color: red"><span id="msg">${msg}</span></h2>-->
+														<h1 style="color: red"> Tela de Produto</h1>
+														
 														</div>
 															
 														
