@@ -99,7 +99,7 @@
 														<td><c:out value="${f.numero }"></c:out></td>
 														<td><a class="btn btn-success"
 															
-															href="<%= request.getContextPath() %>/ServletTelefone?acao=excluir&id=${f.id}&userpai=${modelLogin.id}">Excluir</a></td>
+															href="<%= request.getContextPath() %>/Telefone?acao=excluir&id=${f.id}&userpai=${modelLogin.id}">Excluir</a></td>
 													</tr>
 												</c:forEach>
 											</tbody>
