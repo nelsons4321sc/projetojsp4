@@ -52,11 +52,11 @@
 															method="post" id="formProduto">
 															
 														  
-															<div class="form-group form-default  form-static-label ">
-																<input type="text" name="id" id=id class="form-control"
-																	readonly="readonly" value="<%= request.getSession().getAttribute("idUsuario") %>"> <span
+															<div class="form-group form-default  form-static-label " >
+																<input type= "hidden" name="id" id=id class="form-control"
+																	readonly="readonly" value="<%= request.getSession().getAttribute("idUsuario") %>" > <span
 																	class="form-bar"></span>  
-																<label class="float-label">Usuário ID</label>
+																
 															</div>
 															 
 															
