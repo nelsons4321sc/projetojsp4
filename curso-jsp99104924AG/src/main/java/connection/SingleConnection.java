@@ -5,14 +5,15 @@ import java.sql.DriverManager;
 
 public class SingleConnection {
 	
-	private static String banco= "jdbc:postgresql://localhost:5432/projetojavawebne_projetojspeservlet2?autoReconnect=true";
+	//private static String banco= "jdbc:postgresql://localhost:5432/projetojavawebne_projetojspeservlet2?autoReconnect=true";
+	//private static String banco= "jdbc:postgresql://localhost:5432/projetojavawebne_projetojspeservletproduto?autoReconnect=true";
 	//private static String banco= "jdbc:postgresql://localhost:5433/curso-jsp2?autoReconnect=true";
-	//private static String banco= "jdbc:postgresql://localhost:5433/curso-jsp3?autoReconnect=true";
+	private static String banco= "jdbc:postgresql://localhost:5433/curso-jsp3?autoReconnect=true";
 	//private static String banco= "jdbc:postgresql://localhost:5433/projeto-vendasJSP2?autoReconnect=true";
-	//private static String senha = "admin";
-	//private static String user = "postgres";
-	private static String senha = "Mtsa972106";/*senha da sua hospedagem*/
-	private static String user = "projetojavawebne";
+	private static String senha = "admin";
+	private static String user = "postgres";
+	//private static String senha = "Mtsa972106";/*senha da sua hospedagem*/
+	//private static String user = "projetojavawebne";
 	private static Connection connection = null;
 	//projetojavawebne_projetojspeservlet2
 	static {
