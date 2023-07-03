@@ -17,6 +17,7 @@ public class teste {
 		}
 		
 		System.out.println(pagina.intValue()); 
+		System.out.println("Teste de alteração para saber o git");
 
 	}
 
